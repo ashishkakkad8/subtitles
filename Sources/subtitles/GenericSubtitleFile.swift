@@ -1,4 +1,4 @@
-struct GenericSubtitleFile {
+public struct GenericSubtitleFile {
 
     struct Subtitle {
         let text: String
