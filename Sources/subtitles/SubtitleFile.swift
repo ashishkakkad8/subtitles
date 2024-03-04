@@ -1,6 +1,6 @@
 import Foundation
 
-struct SubtitleFile {
+public struct SubtitleFile {
 
     enum Error: Swift.Error {
         case fileContentsCouldNotBeParsed
@@ -8,13 +8,13 @@ struct SubtitleFile {
         case invalidKind
     }
 
-    enum Kind: String, CaseIterable, Equatable, RawRepresentable, LosslessStringConvertible {
+    public enum Kind: String, CaseIterable, Equatable, RawRepresentable, LosslessStringConvertible {
 
-        init?(_ description: String) {
+        public init?(_ description: String) {
             self.init(rawValue: description)
         }
 
-        var description: String {
+        public var description: String {
             switch self {
             case .detect: return "detect"
             case .ssa: return "ssa"
@@ -60,7 +60,7 @@ struct SubtitleFile {
 
     let root: SubtitleFileRoot
 
-    init(file: URL, encoding: String.Encoding = .unicode, kind: Kind = .detect) throws {
+    public init(file: URL, encoding: String.Encoding = .unicode, kind: Kind = .detect) throws {
         let contents = try Data(contentsOf: file)
         let stringContents = String(data: contents, encoding: encoding)
         guard let string = stringContents else {
@@ -78,7 +78,7 @@ struct SubtitleFile {
         }
     }
 
-    init(file: GenericSubtitleFile, kind: Kind = .detect) throws {
+    public init(file: GenericSubtitleFile, kind: Kind = .detect) throws {
         guard kind != .detect else { throw Error.invalidKind }
         root = kind.rootType.encode(file: file)
     }
