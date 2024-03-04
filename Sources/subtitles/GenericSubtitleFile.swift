@@ -1,13 +1,15 @@
 public struct GenericSubtitleFile {
 
-    public init() {}
+    public init(subtitles: [Subtitle]) {
+        self.subtitles = subtitles
+    }
     
-    struct Subtitle {
+    public struct Subtitle {
         let text: String
         let start: Double
         let end: Double
     }
 
-    let subtitles: [Subtitle]
+    var subtitles: [Subtitle]
 
 }
