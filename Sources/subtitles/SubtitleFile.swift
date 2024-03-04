@@ -83,7 +83,7 @@ public struct SubtitleFile {
         root = kind.rootType.encode(file: file)
     }
 
-    func asString() -> String {
+    public func asString() -> String {
         var output = ""
         root.print(output: &output)
         return output
